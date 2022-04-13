@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import uuid from "react-uuid";
 
 import Button from "../../components/Button";
 import ShoppingList from "../../components/ShoppingList";
 import { removeFromArray } from "../../utils";
 
-const shoppingListFromLocalStorage = JSON.parse(
+let shoppingListFromLocalStorage = JSON.parse(
   localStorage.getItem("shoppingList")
 );
 
@@ -13,34 +14,46 @@ if (!shoppingListFromLocalStorage) {
     "shoppingList",
     JSON.stringify([
       {
+        objectId: uuid(),
         name: "Bread",
         belongsTo: "Current",
         highPriority: true,
+        itemIndex: 5,
       },
       {
+        objectId: uuid(),
         name: "Butter",
         belongsTo: "Previous",
         highPriority: false,
+        itemIndex: 0,
       },
       {
+        objectId: uuid(),
         name: "Soda",
         belongsTo: "Previous",
         highPriority: false,
+        itemIndex: 3,
       },
       {
+        objectId: uuid(),
         name: "Rice",
         belongsTo: "Current",
         highPriority: true,
+        itemIndex: 4,
       },
       {
+        objectId: uuid(),
         name: "Flour",
         belongsTo: "Previous",
         highPriority: true,
+        itemIndex: 2,
       },
       {
+        objectId: uuid(),
         name: "Sugar",
         belongsTo: "Previous",
         highPriority: true,
+        itemIndex: 1,
       },
     ])
   );
@@ -95,11 +108,7 @@ const ShoppingListPage = () => {
     let currentListArray = [...currentList];
     let previousListArray = [...previousList];
     if (item && item.belongsTo === "Previous") {
-      currentListArray.push({
-        name: item.name,
-        belongsTo: "Current",
-        highPriority: item.highPriority,
-      });
+      currentListArray.push({ ...item, belongsTo: "Current" });
       setCurrentList(currentListArray);
       setPreviousList(removeFromArray(previousListArray, item));
     }
@@ -109,14 +118,14 @@ const ShoppingListPage = () => {
     let previousListArray = [...previousList];
     let currentListArray = [...currentList];
     if (item && item.belongsTo === "Current") {
-      previousListArray.push({
-        name: item.name,
-        belongsTo: "Previous",
-        highPriority: item.highPriority,
-      });
+      previousListArray.push({ ...item, belongsTo: "Previous" });
       setPreviousList(previousListArray);
       setCurrentList(removeFromArray(currentListArray, item));
     }
+  };
+
+  const moveUpByIndex = (item) => {
+    console.log("moving up!");
   };
 
   return (
@@ -140,7 +149,9 @@ const ShoppingListPage = () => {
             <Button
               name={"Load list"}
               onClick={() => {
-                console.log("Load List");
+                shoppingListFromLocalStorage = JSON.parse(
+                  localStorage.getItem("shoppingList")
+                );
               }}
             />
           </div>
@@ -164,7 +175,7 @@ const ShoppingListPage = () => {
             <Button
               name={"^"}
               onClick={() => {
-                console.log("^");
+                moveUpByIndex(selectedItem);
               }}
             />
             <Button

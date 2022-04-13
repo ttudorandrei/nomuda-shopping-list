@@ -3,12 +3,14 @@ import ShoppingListItem from "../ShoppingListItem";
 import "./index.css";
 
 const ShoppingList = ({ listType, listData, selection, setSelection }) => {
+  const sortedList = listData.sort((a, b) => a.itemIndex - b.itemIndex);
+
   return (
     <div>
       <h3>{listType}</h3>
       <div className="shopping-list">
         {listData.length > 0 ? (
-          listData.map((item) => {
+          sortedList.map((item) => {
             return (
               <ShoppingListItem
                 selection={selection}
