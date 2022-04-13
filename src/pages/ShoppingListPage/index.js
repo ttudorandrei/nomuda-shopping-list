@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import uuid from "react-uuid";
 
 import Button from "../../components/Button";
+import AddItemModal from "../../components/Modal";
 import ShoppingList from "../../components/ShoppingList";
 import { deleteFromLocalstorage, removeFromArray } from "../../utils";
 
@@ -191,12 +192,14 @@ const ShoppingListPage = () => {
           </div>
 
           <div>
-            <Button
-              name={"Add Item"}
-              onClick={() => {
-                console.log("Add Item");
-              }}
-            />
+            <button
+              type="button"
+              className="btn btn-primary"
+              data-toggle="modal"
+              data-target=".bd-example-modal-sm"
+            >
+              Add Item
+            </button>
 
             <Button
               name={"Remove Item"}
@@ -220,6 +223,8 @@ const ShoppingListPage = () => {
           />
         </div>
       </div>
+
+      <AddItemModal currentList={currentList} setCurrentList={setCurrentList} />
     </div>
   );
 };
