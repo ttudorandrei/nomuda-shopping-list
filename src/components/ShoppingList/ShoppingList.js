@@ -1,4 +1,5 @@
 import React from "react";
+import ShoppingListItem from "../ShoppingListItem/ShoppingListItem";
 import "./shopping-list.css";
 
 const ShoppingList = () => {
@@ -6,12 +7,11 @@ const ShoppingList = () => {
     <div>
       <h3>Current</h3>
       <div className="shopping-list">
-        <div>Element 1</div>
-        <div>Element 1</div>
-        <div>Element 1</div>
-        <div>Element 1</div>
-        <div>Element 1</div>
-        <div>Element 1</div>
+        <ShoppingListItem />
+        <ShoppingListItem />
+        <ShoppingListItem />
+        <ShoppingListItem />
+        <ShoppingListItem />
       </div>
     </div>
   );
