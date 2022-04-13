@@ -1,7 +1,5 @@
-import Button from "../../components/Button/Button";
-import ShoppingList from "../../components/ShoppingList/ShoppingList";
-
-import "./shopping-list-page.css";
+import Button from "../../components/Button";
+import ShoppingList from "../../components/ShoppingList";
 
 const shoppingList = JSON.parse(localStorage.getItem("shoppingList"));
 
@@ -31,12 +29,12 @@ if (!shoppingList) {
 
 const ShoppingListPage = () => {
   return (
-    <div className="container-fluid test-border">
+    <div className="container-fluid">
       <div className="row">
-        <div className="col test-border">
+        <div className="col">
           <ShoppingList listType={"Current"} listData={shoppingList} />
         </div>
-        <div className="col test-border">
+        <div className="col d-flex flex-column justify-content-around align-items-center test-border">
           <div>
             <Button name={"<"} />
             <Button name={">"} />
@@ -46,7 +44,7 @@ const ShoppingListPage = () => {
             <Button name={"v"} />
           </div>
         </div>
-        <div className="col test-border">
+        <div className="col">
           <ShoppingList listType={"Previous"} listData={shoppingList} />
         </div>
       </div>

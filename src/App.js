@@ -1,5 +1,5 @@
 import "./App.css";
-import ShoppingListPage from "./pages/ShoppingListPage/ShoppingListPage";
+import ShoppingListPage from "./pages/ShoppingListPage";
 
 const App = () => {
   return (

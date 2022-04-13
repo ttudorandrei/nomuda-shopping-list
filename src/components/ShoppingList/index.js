@@ -1,11 +1,11 @@
 import React from "react";
-import ShoppingListItem from "../ShoppingListItem/ShoppingListItem";
-import "./shopping-list.css";
+import ShoppingListItem from "../ShoppingListItem";
+import "./index.css";
 
-const ShoppingList = () => {
+const ShoppingList = ({ listType, listData }) => {
   return (
     <div>
-      <h3>Current</h3>
+      <h3>{listType}</h3>
       <div className="shopping-list">
         <ShoppingListItem />
         <ShoppingListItem />
