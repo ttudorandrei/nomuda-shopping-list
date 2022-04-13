@@ -3,7 +3,7 @@ import uuid from "react-uuid";
 
 import Button from "../../components/Button";
 import ShoppingList from "../../components/ShoppingList";
-import { removeFromArray } from "../../utils";
+import { deleteFromLocalstorage, removeFromArray } from "../../utils";
 
 let shoppingListFromLocalStorage = JSON.parse(
   localStorage.getItem("shoppingList")
@@ -99,8 +99,6 @@ const ShoppingListPage = () => {
 
     arr.push(...currentList, ...previousList);
 
-    setShoppingList(arr);
-
     localStorage.setItem("shoppingList", JSON.stringify(arr));
   };
 
@@ -126,6 +124,10 @@ const ShoppingListPage = () => {
 
   const moveUpByIndex = (item) => {
     console.log("moving up!");
+  };
+
+  const moveDownByIndex = (item) => {
+    console.log("moving down!");
   };
 
   return (
@@ -156,6 +158,7 @@ const ShoppingListPage = () => {
             />
           </div>
         </div>
+
         <div className="col d-flex flex-column justify-content-around align-items-center">
           <div>
             <Button
@@ -171,6 +174,7 @@ const ShoppingListPage = () => {
               }}
             />
           </div>
+
           <div>
             <Button
               name={"^"}
@@ -181,10 +185,11 @@ const ShoppingListPage = () => {
             <Button
               name={"v"}
               onClick={() => {
-                console.log("v");
+                moveDownByIndex(selectedItem);
               }}
             />
           </div>
+
           <div>
             <Button
               name={"Add Item"}
@@ -192,8 +197,20 @@ const ShoppingListPage = () => {
                 console.log("Add Item");
               }}
             />
+
+            <Button
+              name={"Remove Item"}
+              onClick={() => {
+                deleteFromLocalstorage(
+                  shoppingListFromLocalStorage,
+                  selectedItem,
+                  "shoppingList"
+                );
+              }}
+            />
           </div>
         </div>
+
         <div className="col">
           <ShoppingList
             listType={"Previous"}
