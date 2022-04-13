@@ -1,10 +1,10 @@
 import "./App.css";
-import ShoppingList from "./components/ShoppingList/ShoppingList";
+import ShoppingListPage from "./pages/ShoppingListPage/ShoppingListPage";
 
 const App = () => {
   return (
     <div>
-      <ShoppingList />
+      <ShoppingListPage />
     </div>
   );
 };
