@@ -4,7 +4,7 @@ import uuid from "react-uuid";
 import Button from "../../components/Button";
 import AddItemModal from "../../components/AddItemModal";
 import ShoppingList from "../../components/ShoppingList";
-import { deleteFromLocalstorage, removeFromArray } from "../../utils";
+import { removeFromArray } from "../../utils";
 import NavigationBar from "../../components/Navbar";
 
 let shoppingListFromLocalStorage = JSON.parse(

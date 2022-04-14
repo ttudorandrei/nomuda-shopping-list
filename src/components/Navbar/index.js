@@ -40,6 +40,15 @@ const NavigationBar = ({ shoppingListFromLocalStorage, selectedItem }) => {
               }}
             />
           </li>
+          <li class="nav-item">
+            <div class="nav-link m-2">Your Account</div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link m-2">About Us</div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link m-2">Contact</div>
+          </li>
         </ul>
       </div>
     </nav>
