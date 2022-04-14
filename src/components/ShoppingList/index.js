@@ -24,6 +24,7 @@ const ShoppingList = ({
                 setSelection={setSelection}
                 itemData={item}
                 shoppingList={shoppingList}
+                key={item.objectId}
               />
             );
           })

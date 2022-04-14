@@ -43,14 +43,14 @@ const NavigationBar = ({ shoppingList, selectedItem }) => {
           <li className="nav-item">
             <Button name={"Export List"} onClick={() => {}} />
           </li>
-          <li class="nav-item">
-            <div class="nav-link m-2">Your Account</div>
+          <li className="nav-item">
+            <div className="nav-link m-2">Your Account</div>
           </li>
-          <li class="nav-item">
-            <div class="nav-link m-2">About Us</div>
+          <li className="nav-item">
+            <div className="nav-link m-2">About Us</div>
           </li>
-          <li class="nav-item">
-            <div class="nav-link m-2">Contact</div>
+          <li className="nav-item">
+            <div className="nav-link m-2">Contact</div>
           </li>
         </ul>
       </div>
