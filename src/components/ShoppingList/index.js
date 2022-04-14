@@ -2,7 +2,13 @@ import React from "react";
 import ShoppingListItem from "../ShoppingListItem";
 import "./index.css";
 
-const ShoppingList = ({ listType, listData, selection, setSelection }) => {
+const ShoppingList = ({
+  listType,
+  listData,
+  selection,
+  setSelection,
+  shoppingList,
+}) => {
   const sortedList = listData.sort((a, b) => a.itemIndex - b.itemIndex);
 
   return (
@@ -16,6 +22,7 @@ const ShoppingList = ({ listType, listData, selection, setSelection }) => {
                 selection={selection}
                 setSelection={setSelection}
                 itemData={item}
+                shoppingList={shoppingList}
               />
             );
           })

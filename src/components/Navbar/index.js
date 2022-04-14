@@ -1,7 +1,7 @@
 import Button from "../../components/Button";
 import { deleteFromLocalstorage } from "../../utils";
 
-const NavigationBar = ({ shoppingListFromLocalStorage, selectedItem }) => {
+const NavigationBar = ({ shoppingList, selectedItem }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="navbar-brand">Shopping List</div>
@@ -33,7 +33,7 @@ const NavigationBar = ({ shoppingListFromLocalStorage, selectedItem }) => {
               name={"Remove Item"}
               onClick={() => {
                 deleteFromLocalstorage(
-                  shoppingListFromLocalStorage,
+                  shoppingList,
                   selectedItem,
                   "shoppingList"
                 );

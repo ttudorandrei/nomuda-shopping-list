@@ -94,6 +94,7 @@ const ShoppingListPage = () => {
 
     updateCurrentList();
     updatePreviousList();
+    setShoppingList(shoppingListFromLocalStorage);
   }, []);
 
   const saveList = () => {
@@ -134,10 +135,7 @@ const ShoppingListPage = () => {
 
   return (
     <div className="container-fluid">
-      <NavigationBar
-        shoppingListFromLocalStorage={shoppingListFromLocalStorage}
-        selectedItem={selectedItem}
-      />
+      <NavigationBar shoppingList={shoppingList} selectedItem={selectedItem} />
       <div className="row">
         <div className="col col-lg-4 col-sm-5">
           <ShoppingList
@@ -145,6 +143,7 @@ const ShoppingListPage = () => {
             listData={currentList}
             selection={selectedItem}
             setSelection={setSelectedItem}
+            shoppingList={shoppingList}
           />
           <div>
             <Button name={"Save List"} onClick={saveList} />
@@ -160,6 +159,7 @@ const ShoppingListPage = () => {
                 shoppingListFromLocalStorage = JSON.parse(
                   localStorage.getItem("shoppingList")
                 );
+                setShoppingList(shoppingListFromLocalStorage);
               }}
             />
           </div>
@@ -203,6 +203,7 @@ const ShoppingListPage = () => {
             listData={previousList}
             selection={selectedItem}
             setSelection={setSelectedItem}
+            shoppingList={shoppingList}
           />
         </div>
       </div>
