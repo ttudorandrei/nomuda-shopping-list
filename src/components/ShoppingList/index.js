@@ -9,6 +9,7 @@ const ShoppingList = ({
   setSelection,
   shoppingList,
 }) => {
+  // sorts the list by the itemIndex value
   const sortedList = listData.sort((a, b) => a.itemIndex - b.itemIndex);
 
   return (

@@ -40,6 +40,9 @@ const NavigationBar = ({ shoppingList, selectedItem }) => {
               }}
             />
           </li>
+          <li className="nav-item">
+            <Button name={"Export List"} onClick={() => {}} />
+          </li>
           <li class="nav-item">
             <div class="nav-link m-2">Your Account</div>
           </li>

@@ -11,6 +11,7 @@ let shoppingListFromLocalStorage = JSON.parse(
   localStorage.getItem("shoppingList")
 );
 
+// dummy data to test the app
 if (!shoppingListFromLocalStorage) {
   localStorage.setItem(
     "shoppingList",
@@ -67,6 +68,7 @@ const ShoppingListPage = () => {
   const [previousList, setPreviousList] = useState([]);
   const [selectedItem, setSelectedItem] = useState();
 
+  // using useEffect hook to sort the contents of the array baset on them belonging to either "Current" or "Previous" lists.
   useEffect(() => {
     const updateCurrentList = () => {
       let arr = [];
@@ -97,6 +99,7 @@ const ShoppingListPage = () => {
     setShoppingList(shoppingListFromLocalStorage);
   }, []);
 
+  // will save the list after it being updated
   const saveList = () => {
     let arr = [];
 
@@ -105,6 +108,7 @@ const ShoppingListPage = () => {
     localStorage.setItem("shoppingList", JSON.stringify(arr));
   };
 
+  // logic to move from "Previous" to "Current" lists. First finds the item, updates the key: value pair updating the list it belongs to and assembles the updated lists.
   const moveToCurrentList = (item) => {
     let currentListArray = [...currentList];
     let previousListArray = [...previousList];
@@ -115,6 +119,7 @@ const ShoppingListPage = () => {
     }
   };
 
+  // logic to move from "Current" to "Previous". Logic similar to moveToCurrentList
   const moveToPreviousList = (item) => {
     let previousListArray = [...previousList];
     let currentListArray = [...currentList];
@@ -125,10 +130,12 @@ const ShoppingListPage = () => {
     }
   };
 
+  // WIP
   const moveUpByIndex = (item) => {
     console.log("moving up!");
   };
 
+  // WIP
   const moveDownByIndex = (item) => {
     console.log("moving down!");
   };

@@ -2,25 +2,29 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const AddItemModal = ({ currentList, setCurrentList }) => {
+  // useForm hook helping with registering and submitting form data
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  // on submission, the new element is being pushed into the currentList array and the the currentList is being updated with the new array containing the recently added item
   const submitNewItem = (formData) => {
-    let array = [...currentList];
+    let currentListArray = [...currentList];
 
-    const sortedList = array.sort((a, b) => b.itemIndex - a.itemIndex);
+    const sortedList = currentListArray.sort(
+      (a, b) => b.itemIndex - a.itemIndex
+    );
 
-    array.push({
+    currentListArray.push({
       ...formData,
       belongsTo: "Current",
       highPriority: JSON.parse(formData.highPriority),
       itemIndex: sortedList[0].itemIndex + 1,
     });
 
-    setCurrentList(array);
+    setCurrentList(currentListArray);
   };
 
   return (
