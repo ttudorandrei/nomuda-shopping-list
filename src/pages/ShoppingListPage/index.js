@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import uuid from "react-uuid";
 
 import Button from "../../components/Button";
-import AddItemModal from "../../components/Modal";
+import AddItemModal from "../../components/AddItemModal";
 import ShoppingList from "../../components/ShoppingList";
 import { deleteFromLocalstorage, removeFromArray } from "../../utils";
+import NavigationBar from "../../components/Navbar";
 
 let shoppingListFromLocalStorage = JSON.parse(
   localStorage.getItem("shoppingList")
@@ -133,8 +134,12 @@ const ShoppingListPage = () => {
 
   return (
     <div className="container-fluid">
+      <NavigationBar
+        shoppingListFromLocalStorage={shoppingListFromLocalStorage}
+        selectedItem={selectedItem}
+      />
       <div className="row">
-        <div className="col">
+        <div className="col col-lg-4 col-sm-5">
           <ShoppingList
             listType={"Current"}
             listData={currentList}
@@ -160,7 +165,7 @@ const ShoppingListPage = () => {
           </div>
         </div>
 
-        <div className="col d-flex flex-column justify-content-around align-items-center">
+        <div className="col col-lg-4 col-sm-2 d-flex flex-column justify-content-around align-items-center">
           <div>
             <Button
               name={"<"}
@@ -190,31 +195,9 @@ const ShoppingListPage = () => {
               }}
             />
           </div>
-
-          <div>
-            <button
-              type="button"
-              className="btn btn-primary"
-              data-toggle="modal"
-              data-target=".bd-example-modal-sm"
-            >
-              Add Item
-            </button>
-
-            <Button
-              name={"Remove Item"}
-              onClick={() => {
-                deleteFromLocalstorage(
-                  shoppingListFromLocalStorage,
-                  selectedItem,
-                  "shoppingList"
-                );
-              }}
-            />
-          </div>
         </div>
 
-        <div className="col">
+        <div className="col col-lg-4 col-sm-5">
           <ShoppingList
             listType={"Previous"}
             listData={previousList}
